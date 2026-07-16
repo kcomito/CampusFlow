@@ -9,7 +9,7 @@ function App() {
         <h1>CampusFlow</h1> {/**JSX (Javascript XML) write code similar to HTML inside JS */}
 
         <p className="hero-description">
-          Plan events, organize tasks, and build stronger campus communities.
+          Plan events, organize tasks, and build stronger campus communities. Built by RAs for RAs
         </p>
 
          {/* type=button is a regular button not form-submission button*/}
