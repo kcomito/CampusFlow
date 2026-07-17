@@ -56,5 +56,12 @@ button:hover {
 
 .active-link{
   font-size: 1.2rem;
-  color:;
+  color: #65558f;
+}
+
+.nav-link{
+  font-size:small;
+  font-weight: 700;
+  letter-spacing: 0.08rem;
+  
 }
