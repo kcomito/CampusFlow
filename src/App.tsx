@@ -1,23 +1,30 @@
 import "./App.css"; // Stylesheet connected
+import {Route, Routes} from "react-router"; // named exports, not default exports, so need curly braces
+import LandingPage from "./pages/LandingPage"; 
+import LoginPage from "./pages/LoginPage";
+import DashboardPage from "./pages/DashboardPage";
+import NavBar from "./components/Navbar";
 
 function App() {
   return ( // return statment, tells React what should appear on the page
-    <main className="landing-page"> {/* Outermost JSX element */}
-      <section className="hero"> {/* Child JSX element*/}
-        <p className="eyebrow">Campus event planning made easier</p> {/* JSX element*/}
+    <> {/* the fragment <> makes NavBa and Routes silings under one shared paret */}
+      <NavBar /> {/* Navbar outside Routes stays visbile regardless of which page route is active */}
+        <Routes>
+          {/* Route elements
+          LandingPage
+          LoginPage
+          DashboardPage */}
 
-        <h1>CampusFlow</h1> {/**JSX (Javascript XML) write code similar to HTML inside JS */}
+          <Route path ="/" element={<LandingPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
 
-        <p className="hero-description">
-          Plan events, organize tasks, and build stronger campus communities. Built by RAs for RAs
-        </p>
-
-         {/* type=button is a regular button not form-submission button*/}
-        <button type="button">Get Started</button> {/**Everything between paratheses is JSX */}
-      </section>
-    </main>
+        </Routes> {/*refers to component rahter than a build in HTML element
+                      // a componen t is used like a custom JSX element */} 
+    </>
   );
 }
 
 export default App; // makes App component available for another file to export
-// Notes:
+// Notes: 
+  //NavLink versus Link: boht navigate without reloading whole page. NavLink knows what is currently active

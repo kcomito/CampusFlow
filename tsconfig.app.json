@@ -1,12 +1,17 @@
 {
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    
+    // flavor of JS that TS will compile code to
     "target": "es2023",
+
     "lib": ["ES2023", "DOM"],
-    "module": "esnext",
+    "module": "esnext", // code cna write 2021 JS
     "types": ["vite/client"],
     "allowArbitraryExtensions": true,
     "skipLibCheck": true,
+    // recomendation to make strict, refactoring and colab with other developers easier
+    // "strict": true
 
     /* Bundler mode */
     "moduleResolution": "bundler",
