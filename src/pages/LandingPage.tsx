@@ -14,7 +14,7 @@ function LandingPage(){
                 </p>
 
          {/* type=button is a regular button not form-submission button*/}
-         <Link to="/login">Get Started</Link> {/**Everything between paratheses is JSX */}
+         <Link to="/login" className="hero-button">Get Started</Link> {/**Everything between paratheses is JSX */}
       </section>
     </main>
     );

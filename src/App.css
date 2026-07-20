@@ -1,10 +1,24 @@
-#root {
+/* #root is the React container inside of the HTML page */
+#root{
   min-height: 100vh;
 }
 
+/* :root represents the top-level HTML element and stores global variables  */
+:root{
+  --color-background: #ffffff;
+  --color-text: #333333;
+  --color-primary: #65558f;
+  --color-primary-hover: #514473;
+  --color-border-subtle: #e9ecef;
+  --navbar-height: 70px;
+  --navbar-padding: 1rem;
+  --container-width: 1140px;
+}
+
+/* calc = make the landing page fill the remaining viewpoint after account for the navbar */
 .landing-page {
   display: flex;
-  min-height: 100vh;
+  min-height: calc(100vh - var(--navbar-height));
   align-items: center;
   justify-content: center;
   padding: 2rem;
@@ -17,7 +31,7 @@
 
 .eyebrow {
   margin-bottom: 1rem;
-  color: #65558f;
+  color: var(--color-primary);
   font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.08rem;
@@ -38,30 +52,168 @@ h1 {
   line-height: 1.7;
 }
 
-button {
+.hero-button {
   border: none;
   border-radius: 0.75rem;
   padding: 0.9rem 1.5rem;
-  background: #65558f;
+  background: var(--color-primary);
   color: white;
   cursor: pointer;
   font-size: 2rem;
   font-weight: 700;
 }
 
-button:hover {
-  background: #514473;
+.hero-button:hover {
+  background: var(--color-primary-hover);
 }
 
+/*
+position: relative allows the dropdown menu to positon itself relative to the navbar 
+*/
+.navbar {
+  height: var(--navbar-height); 
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border-subtle);
+  position: relative;
+}
+
+.navbar__brand{
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.navbar__toggle {
+  display: block;
+  padding: 0.5rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+
+/* this selects every element with the class bar that is inside an element with class navbar__toggle
+each span becomes a horizonal line
+  height: defines the thickness of the lines
+  margin: creates the spacing between the lines
+  padding: creats space arounf the entire gorup of three to increase the clickable areas
+  display: stacks the spans vertically into the hamburger
+  transition makes the movement animate instead of happening instantly (hambuger-to-X animation)
+*/
+.navbar__toggle .bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background-color: var(--color-text);
+  transition: all 0.2s ease-in-out
+}
+
+/* nth-child targets each bar 1st,2nd, and 3rd bar */
+.navbar__toggle.is-active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+/* makes the second bar disappear for the X-animation */
+.navbar__toggle.is-active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar__toggle.is-active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* display: none hides the menu by default
+  position: absolute allows the mobile menu to open underneath the navbar without taking up space
+  top and left place the menu directly below the 70px navbar and aligns the left side of the page
+*/
+.navbar__menu {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: var(--navbar-height);
+  left: 0;
+  width: 100%;
+  background-color: var(--color-background);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+/* selects an element that has both classes navbar__menu and is-active
+display: flex allows the menu to appear
+*/
+.navbar__menu.is-active {
+  display: flex;
+}
+
+.navbar__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--navbar-padding);
+}
+
+.navbar__list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Each list item stretch across the menu*/
+.navbar__item {
+  width: 100%;
+  text-align: center;
+}
+
+.navbar__link{
+  color: var(--color-text);
+  display:block;
+  width:100%;
+  border-radius: 15px;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
 
 .active-link{
-  font-size: 1.2rem;
-  color: #65558f;
+  color: var(--color-primary);
+  font-weight: 600;
+  border-bottom-color: var(--color-primary);
 }
 
-.nav-link{
-  font-size:small;
-  font-weight: 700;
-  letter-spacing: 0.08rem;
-  
+/* Desktop media query returns true and applied desktop designs if device matches requirement (min-width: 786px)*/
+@media (min-width: 768px) {
+  .navbar__toggle {
+    display: none;
+  }
+
+  .navbar__menu {
+    display: flex;
+    position: static;
+    width: auto;
+    background-color: transparent;
+    border-bottom: none;
+  }
+
+  .navbar__list {
+    flex-direction: row;
+    width: auto;
+  }
+
+  .navbar__item {
+    width: auto;
+  }
+
+  .navbar__link {
+    width: auto;
+  }
 }
