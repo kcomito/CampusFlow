@@ -4,6 +4,7 @@ import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
 import NavBar from "./components/Navbar";
+import SignUpPages from "./pages/SignUpPages";
 
 function App() {
   return ( // return statment, tells React what should appear on the page
@@ -18,6 +19,7 @@ function App() {
           <Route path ="/" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/signup" element={<SignUpPages />} />
 
         </Routes> {/*refers to component rahter than a build in HTML element
                       // a componen t is used like a custom JSX element */} 
