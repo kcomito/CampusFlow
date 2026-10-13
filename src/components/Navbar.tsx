@@ -31,7 +31,9 @@ function NavBar(){
 
                 
 
-                <nav id="navbar-menu" className={isMenuOpen ? "navbar__menu is-active" : "navbar__menu"}>
+                <nav id="navbar-menu" 
+                className={isMenuOpen ? "navbar__menu is-active" : "navbar__menu"}
+                >
                     <ul className="navbar__list">
                         <li className="navbar__item">
                             <NavLink to="/dashboard" 
